@@ -37,7 +37,7 @@ with st.sidebar:
 
              
 @st.cache(allow_output_mutation=True)
-def load_model
+def load_model():
     with custom_object_scope({'TFOpLambda': custom_layer_function}):
         model = tf.keras.models.load_model('mango_model.h5')
    
