@@ -1,5 +1,6 @@
 import streamlit as st
 import tensorflow as tf
+from tensorflow.keras.utils import custom_object_scope
 #from tensorflow import keras
 import random
 from PIL import Image, ImageOps
@@ -36,8 +37,10 @@ with st.sidebar:
 
              
 @st.cache(allow_output_mutation=True)
-def load_model():
-    model=tf.keras.models.load_model('mango_model.h5')
+def load_model
+    with custom_object_scope({'TFOpLambda': custom_layer_function}):
+        model = tf.keras.models.load_model('mango_model.h5')
+   
     return model
 with st.spinner('Model is being loaded..'):
     model=load_model()
