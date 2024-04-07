@@ -27,7 +27,7 @@ def prediction_cls(prediction):
 
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model=tf.keras.models.load_model('mango_model.h5')
+    model = tf.keras.models.load_model('mango_model.h5')
     return model
 
 with st.spinner('Model is being loaded..'):
@@ -54,7 +54,7 @@ else:
     image = Image.open(file)
     st.image(image, use_column_width=True)
     predictions = import_and_predict(image, model)
-    x = random.randint(98,99) + random.randint(0, 99) * 0.01
+    x = random.randint(98, 99) + random.randint(0, 99) * 0.01
     st.sidebar.error("Accuracy : " + str(x) + " %")
 
     class_names = {0: 'Anthracnose', 1: 'Bacterial Canker', 2: 'Cutting Weevil', 3: 'Die Back', 4: 'Gall Midge', 5: 'Healthy', 6: 'Powdery Mildew', 7: 'Sooty Mould'}
@@ -86,3 +86,16 @@ else:
             st.info("Remedy suggestion for Powdery Mildew")
         elif predicted_class_name == 'Sooty Mould':
             st.info("Remedy suggestion for Sooty Mould")
+
+# Additional Debugging Steps
+st.write("Model summary:")
+st.write(model.summary())
+
+# Check model layers
+st.write("Model layers:")
+for layer in model.layers:
+    st.write(layer.name)
+
+# Check input and output shapes
+st.write("Input shape:", model.input_shape)
+st.write("Output shape:", model.output_shape)
