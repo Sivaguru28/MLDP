@@ -27,13 +27,14 @@ def prediction_cls(prediction):
 
 @st.cache(allow_output_mutation=True)
       
+@st.cache(allow_output_mutation=True)
 def load_model():
-    model = tf.keras.models.load_model('mango_model.h5')
-    custom_objects={'KerasLayer':hub.KerasLayer}
+    model=tf.keras.models.load_model('mango_model.h5')
     return model
-
 with st.spinner('Model is being loaded..'):
-    model = load_model()
+    model=load_model()
+
+
 
 st.write("""
          # Mango Disease Detection with Remedy Suggestion
