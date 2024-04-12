@@ -88,15 +88,3 @@ else:
         elif predicted_class_name == 'Sooty Mould':
             st.info("Remedy suggestion for Sooty Mould")
 
-# Additional Debugging Steps
-st.write("Model summary:")
-st.write(model.summary())
-
-# Check model layers
-st.write("Model layers:")
-for layer in model.layers:
-    st.write(layer.name)
-
-# Check input and output shapes
-st.write("Input shape:", model.input_shape)
-st.write("Output shape:", model.output_shape)
