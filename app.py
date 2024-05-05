@@ -9,30 +9,30 @@ warnings.filterwarnings("ignore")
 
 st.set_page_config(
     page_title="Mango Leaf Disease Detection",
-    page_icon = ":mango:",
-    initial_sidebar_state = 'auto'
+    page_icon=":mango:",
+    initial_sidebar_state='auto'
 )
+
 hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
+"""
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 def prediction_cls(prediction):
     for key, clss in class_names.items():
-        if np.argmax(prediction)==clss:
+        if np.argmax(prediction) == clss:
             return key
 
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model=tf.keras.models.load_model('mango_model.h5')
+    model = tf.keras.models.load_model('mango_model.h5')
     return model
+
 with st.spinner('Model is being loaded..'):
-    model=load_model()
-
-
+    model = load_model()
 
 st.write("""
          # Mango Disease Detection with Remedy Suggestion
@@ -42,10 +42,10 @@ st.write("""
 file = st.file_uploader("", type=["jpg", "png"])
 
 def import_and_predict(image_data, model):
-    size = (224, 224)    
+    size = (224, 224)
     image = ImageOps.fit(image_data, size, Image.Resampling.LANCZOS)
     img = np.asarray(image)
-    img_reshape = img[np.newaxis,...]
+    img_reshape = img[np.newaxis, ...]
     prediction = model.predict(img_reshape)
     return prediction
 
@@ -74,17 +74,16 @@ else:
 
         # Add remedy suggestions based on the predicted class
         if predicted_class_name == 'Anthracnose':
-            st.info("Remedy suggestion for Anthracnose")
+            st.info("Remedy suggestion for Anthracnose: Apply fungicides containing copper compounds")
         elif predicted_class_name == 'Bacterial Canker':
-            st.info("Remedy suggestion for Bacterial Canker")
+            st.info("Remedy suggestion for Bacterial Canker: Prune affected branches and apply copper-based fungicides.")
         elif predicted_class_name == 'Cutting Weevil':
-            st.info("Remedy suggestion for Cutting Weevil")
+            st.info("Remedy suggestion for Cutting Weevil:Remove and destroy infested plant parts and apply insecticides. ")
         elif predicted_class_name == 'Die Back':
-            st.info("Remedy suggestion for Die Back")
+            st.info("Remedy suggestion for Die Back ; Prune infected branches and improve soil drainage.")
         elif predicted_class_name == 'Gall Midge':
-            st.info("Remedy suggestion for Gall Midge")
+            st.info("Remedy suggestion for Gall Midge : Remove and destroy infected leaves and apply insecticides.")
         elif predicted_class_name == 'Powdery Mildew':
-            st.info("Remedy suggestion for Powdery Mildew")
+            st.info("Remedy suggestion for Powdery Mildew : Apply fungicides containing sulfur or potassium bicarbonate.")
         elif predicted_class_name == 'Sooty Mould':
-            st.info("Remedy suggestion for Sooty Mould")
-
+            st.info("Remedy suggestion for Sooty Mould : Clean affected surfaces with soapy water and control the insect pests causing the infestation.")
