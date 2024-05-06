@@ -78,7 +78,7 @@ else:
         elif predicted_class_name == 'Bacterial Canker':
             st.info("Remedy suggestion for Bacterial Canker")
         elif predicted_class_name == 'Cutting Weevil':
-            st.info("Remedy suggestion for Cutting Weevil")
+            st.info("Remedy suggestion for Cutting Weevil : Remove and destroy infested plant parts and apply insecticides.")
         elif predicted_class_name == 'Die Back':
             st.info("Remedy suggestion for Die Back")
         elif predicted_class_name == 'Gall Midge':
