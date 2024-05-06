@@ -74,17 +74,17 @@ else:
 
         # Add remedy suggestions based on the predicted class
         if predicted_class_name == 'Anthracnose':
-            st.info("Remedy suggestion for Anthracnose")
+            st.info("Remedy suggestion for Anthracnose : Apply fungicides containing copper compounds")
         elif predicted_class_name == 'Bacterial Canker':
-            st.info("Remedy suggestion for Bacterial Canker")
+            st.info("Remedy suggestion for Bacterial Canker : Prune affected branches and apply copper-based fungicides.")
         elif predicted_class_name == 'Cutting Weevil':
             st.info("Remedy suggestion for Cutting Weevil : Remove and destroy infested plant parts and apply insecticides.")
         elif predicted_class_name == 'Die Back':
-            st.info("Remedy suggestion for Die Back")
+            st.info("Remedy suggestion for Die Back :Prune infected branches and improve soil drainage")
         elif predicted_class_name == 'Gall Midge':
-            st.info("Remedy suggestion for Gall Midge")
+            st.info("Remedy suggestion for Gall Midge: Remove and destroy infected leaves and apply insecticides")
         elif predicted_class_name == 'Powdery Mildew':
-            st.info("Remedy suggestion for Powdery Mildew")
+            st.info("Remedy suggestion for Powdery Mildew : Apply fungicides containing sulfur or potassium bicarbonate")
         elif predicted_class_name == 'Sooty Mould':
-            st.info("Remedy suggestion for Sooty Mould")
+            st.info("Remedy suggestion for Sooty Mould: Clean affected surfaces with soapy water and control the insect pests causing the infestation")
 
